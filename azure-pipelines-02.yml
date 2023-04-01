@@ -20,17 +20,26 @@ stages:
     steps:
       - bash: echo Build SecondJob
 - stage: DevDeploy
+  variables:
+    environment: Dev
   jobs:
   - job: DevDeployJob
     steps:
       - bash: echo Build DevDeployJob
+      - bash: echo $(environment)
 - stage: QADeploy
+  variables:
+    environment: QA
   jobs:
   - job: QADeployJob
     steps:
       - bash: echo Build QADeployJob
+      - bash: echo $(environment)
 - stage: ProdDeploy   
+  variables:
+    environment: Prod
   jobs:
   - job: ProdDeployJob
     steps:
       - bash: echo Build ProdDeploy
+      - bash: echo $(environment)
